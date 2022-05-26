@@ -42,6 +42,28 @@ body {
     "footer footer footer";
 }
 
+@media (max-width: 1366px) {
+  .container {
+    grid-template-areas:
+      "header header header"
+      "sidenav content content"
+      "sidenav announcement announcement"
+      "footer footer footer";
+  }
+}
+
+@media (max-width: 760px) {
+  .container {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "header"
+      "sidenav"
+      "content"
+      "announcement"
+      "footer";
+  }
+}
+
 /* HEADER */
 
 .header {
@@ -77,6 +99,21 @@ body {
   max-width: 200px;
 }
 
+@media (max-width: 760px) {
+  .header {
+    grid-template-columns: auto;
+  }
+  .logo {
+    margin-bottom: 20px;
+  }
+  .header nav a {
+    font-size: 1rem;
+  }
+  .header nav ul {
+    gap: 10px;
+  }
+}
+
 /* SIDENAV */
 
 .sidenav {
@@ -99,6 +136,45 @@ body {
 
 .sidenav li a:hover {
   background: #b07dfb;
+}
+
+@media (max-width: 760px) {
+  @keyframes arrow {
+    from {
+      right: 30px;
+    }
+    to {
+      right: 20px;
+    }
+  }
+
+  .sidenav {
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .sidenav::after {
+    content: "🠚";
+    position: absolute;
+    top: 5px;
+    right: 30px;
+    color: rgba(0, 0, 0, 0.3);
+    animation: arrow 0.5s ease-in 0s infinite alternate;
+  }
+
+  .sidenav ul {
+    display: flex;
+  }
+  .sidenav ul li {
+    flex: 1 0 60px;
+  }
+  .sidenav {
+    padding: 0 30px;
+  }
+  .sidenav li a {
+    margin: 30px 30px 30px 0;
+  }
 }
 
 /* CONTENT */
@@ -124,6 +200,12 @@ body {
 
 .img-02 {
   align-self: end;
+}
+
+@media (max-width: 600px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ESTILOS CONTENT */
@@ -234,6 +316,7 @@ body {
   align-content: start;
   padding: 30px;
   gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 /* FOOTER */
